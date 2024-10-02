@@ -71,28 +71,30 @@
 
     <div class="calculator">
         <div class="card border-light mb-3" style="max-width: 20rem;">
-            <div class="card-header">Dataman | Operand 1</div>
-            <div class="card-body">            
-                    <input type="text" id="display" readonly>
+            <div class="card-header">Dataman</div>
+            <div class="card-body">
+                <form method ="POST">
+                    <input type="text" id="display" name="display" class="form-control mb-3" readonly value="{{ operand1 }}">
                     <div class="buttons">
                         <button onclick="enterOperandDigit('7')">7</button>
                         <button onclick="enterOperandDigit('8')">8</button>
                         <button onclick="enterOperandDigit('9')">9</button>
-                        <button class="operator">/</button>
+                        <button class="operator" onclick="enterOperation('/')">/</button>
                         <button onclick="enterOperandDigit('4')">4</button>
                         <button onclick="enterOperandDigit('5')">5</button>
                         <button onclick="enterOperandDigit('6')">6</button>
-                        <button class="operator">*</button>
+                        <button class="operator" onclick="enterOperation('*')">*</button>
                         <button onclick="enterOperandDigit('1')">1</button>
                         <button onclick="enterOperandDigit('2')">2</button>
                         <button onclick="enterOperandDigit('3')">3</button>
-                        <button class="operator">-</button>
-                        <button onclick="enterOperandDigit('0')">0</button>
-                        <button>.</button>
-                        <button>=</button>
-                        <button class="operator">+</button>
+                        <button class="operator" onclick="enterOperation('-')">-</button>
+                        <button onclick="enterOperandDigit('0')">0</button>                        
+                        <button onclick="enterOperation('=')" >=</button>
+                        <button onclick="clearCalculator()">C</button>
+                        <button class="operator" onclick="enterOperation('+')">+</button>
                     </div>
-                </div>  
+                </div>
+                </form>
             </div>
         </div>
 
@@ -100,6 +102,14 @@
 
         function enterOperandDigit(digit) {
             document.getElementById('display').value += digit;
+        }
+
+        function enterOperation(operation) {
+            document.getElementById('display').value += operation;            
+        }
+
+        function clearCalculator() {
+            document.getElementById('display').value = "";
         }
 
     </script>
