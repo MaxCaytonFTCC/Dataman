@@ -7,7 +7,6 @@ app.config["DEBUG"] = True
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # Or Redirect to itself during POST (or other)
     return redirect(url_for('calculator'))
 
 @app.route("/calculator", methods=["GET", "POST"])
