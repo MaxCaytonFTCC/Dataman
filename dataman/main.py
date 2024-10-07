@@ -9,7 +9,7 @@ def index():
     
     # Either show the page...
     if request.method == "GET":
-        return render_template("main_page.html")
+        return render_template("calculator.html")
 
     # Or Redirect to itself during POST (or other)
     return redirect(url_for('index'))
