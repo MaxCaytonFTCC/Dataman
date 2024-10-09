@@ -17,103 +17,137 @@
         <p>Welcome to the Greg The Oracle! Please use the buttons to perform basic calculations. Turn the calculator ON using the ON button, and press OFF to turn it off. Currently, the Answer Checker (???) Game is the only functional game. Stay tuned for more!</p>
     </div>
 
-    <div class="calc">
-        <div class="grip lgrip">
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-        </div>
-        <div class="display" id="display">0</div>
-        <div class="button">
-            <div class="cbutton" onclick="showMessage('Electro Flash')">⚡︎</div>
-            <div class="cbutton" onclick="showMessage('Help')">[?]</div>
-            <div class="cbutton" onclick="turnOff()">OFF</div>
-            <div class="hbutton on" onclick="turnOn()">ON</div>
+    <form method ="POST">
+        <div class="calc">
+            <div class="grip lgrip">
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+            </div>
+            <input class="display" type="text" id="display" name="display" readonly value="{{ currentEquation }}">
+            <div class="button">
+                <div class="cbutton" onclick="showMessage('Electro Flash')">⚡︎</div>
+                <div class="cbutton" onclick="showMessage('Help')">[?]</div>
+                <div class="cbutton" onclick="turnOff()">OFF</div>
+                <div class="hbutton on" onclick="turnOn()">ON</div>
 
-            <div class="cbutton" onclick="showMessage('Wipe Out')">💥</div>
-            <div class="cbutton" onclick="showMessage('Answer Checker')">???</div>
-            <div class="cbutton" onclick="showMessage('Force Out')">↗</div>
-            <div class="hbutton" onclick="inputOperator('÷')">÷</div>
+                <div class="cbutton" onclick="showMessage('Wipe Out')">💥</div>
+                <div class="cbutton" onclick="showMessage('Answer Checker')">???</div>
+                <div class="cbutton" onclick="showMessage('Force Out')">↗</div>
+                <div class="hbutton" onclick="inputOperator('/')">÷</div>
 
-            <div class="rbutton" onclick="showNumber(7)">7</div>
-            <div class="rbutton" onclick="showNumber(8)">8</div>
-            <div class="rbutton" onclick="showNumber(9)">9</div>
-            <div class="hbutton" onclick="inputOperator('×')">×</div>
+                <div class="rbutton" onclick="showNumber(7)">7</div>
+                <div class="rbutton" onclick="showNumber(8)">8</div>
+                <div class="rbutton" onclick="showNumber(9)">9</div>
+                <div class="hbutton" onclick="inputOperator('*')">×</div>
 
-            <div class="rbutton" onclick="showNumber(4)">4</div>
-            <div class="rbutton" onclick="showNumber(5)">5</div>
-            <div class="rbutton" onclick="showNumber(6)">6</div>
-            <div class="hbutton" onclick="inputOperator('-')">-</div>
+                <div class="rbutton" onclick="showNumber(4)">4</div>
+                <div class="rbutton" onclick="showNumber(5)">5</div>
+                <div class="rbutton" onclick="showNumber(6)">6</div>
+                <div class="hbutton" onclick="inputOperator('-')">-</div>
 
-            <div class="rbutton" onclick="showNumber(1)">1</div>
-            <div class="rbutton" onclick="showNumber(2)">2</div>
-            <div class="rbutton" onclick="showNumber(3)">3</div>
-            <div class="hbutton" onclick="inputOperator('+')">+</div>
+                <div class="rbutton" onclick="showNumber(1)">1</div>
+                <div class="rbutton" onclick="showNumber(2)">2</div>
+                <div class="rbutton" onclick="showNumber(3)">3</div>
+                <div class="hbutton" onclick="inputOperator('+')">+</div>
 
-            <div class="brbutton" onclick="showNumber(0)">0</div>
-            <div class="brbutton" onclick="showMessage('GO')">GO</div>
-            <div class="brbutton" onclick="inputOperator('.')">⚫</div>
-            <div class="brbutton" onclick="calculateResult()">=</div>
-        </div>
-        <div class="grip rgrip">
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-            <div class="vridge"></div>
-        </div>
-        <div class="bgrip lbgrip">
-            <div class="invbar">
-                <div class="invridge"></div>
-                <div class="invridge"></div>
-                <div class="invridge"></div>
-                <div class="invridge"></div>
-                <div class="invridge"></div>
-                <div class="invridge"></div>
+                <div class="brbutton" onclick="showNumber(0)">0</div>
+                <button type="submit" class="brbutton">GO</button>
+                <div class="brbutton">⚫</div>
+                <div class="brbutton" onclick="inputOperator('=')">=</div>
+            </div>
+            <div class="grip rgrip">
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+            </div>
+            <div class="bgrip lbgrip">
+                <div class="invbar">
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                </div>
+            </div>
+            <div class="bgrip rbgrip">
+                <div class="invbar">
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                </div>
             </div>
         </div>
-        <div class="bgrip rbgrip">
-            <div class="invbar">
-                <div class="invridge"></div>
-                <div class="invridge"></div>
-                <div class="invridge"></div>
-                <div class="invridge"></div>
-                <div class="invridge"></div>
-                <div class="invridge"></div>
-            </div>
-        </div>
-    </div>
+    </form>
 
     <div class="additional-info">
         <p>Note: Future functionality will include choosing the game and then pressing 'GO' to start the game.</p>
     </div>
 
     <script>
-
-        function enterOperandDigit(digit) {
-            document.getElementById('display').value += digit;
+        let isOn = true;
+        let expression = '';
+    
+        function showMessage(message) {
+            if (isOn) {
+                document.getElementById('display').value = message;
+                expression = '';
+            }
         }
-
-        function enterOperation(operation) {
-            document.getElementById('display').value += operation;            
+    
+        function showNumber(number) {
+            if (isOn) {
+                const display = document.getElementById('display');
+                if (display.value === "0") {
+                    expression = number.toString();
+                } else {
+                    expression += number.toString();
+                }
+                display.value = expression;
+            }
         }
-
-        function clearCalculator() {
+    
+        function inputOperator(operator) {
+            if (isOn) {
+                const display = document.getElementById('display');
+                if (!isNaN(display.value.slice(-1))) {
+                    expression += operator;
+                    display.value = expression;
+                }
+            }
+        }
+    
+        function turnOn() {
+            isOn = true;
+            document.getElementById('display').value = "0";
+            expression = "0";
+        }
+    
+        function turnOff() {
+            isOn = false;
             document.getElementById('display').value = "";
+            expression = '';
         }
 
     </script>
+    
   </body>
 </html>

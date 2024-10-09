@@ -15,7 +15,7 @@ def calculator():
         currentEquation = request.form['display']
         
         # Check Answer & Place response in Calculator Display
-        currentEquation = 'You got it!' if answ.checkAnswer(currentEquation) else 'EEEEEE'
+        currentEquation = 'Correct!' if answ.checkAnswer(currentEquation) else 'EEEEEE'
         return render_template('calculator.html', currentEquation=currentEquation)
     
     # GET Response
