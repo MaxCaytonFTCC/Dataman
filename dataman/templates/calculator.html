@@ -31,15 +31,15 @@
                 <div class="vridge"></div>
                 <div class="vridge"></div>
             </div>
-            <input class="display" type="text" id="display" name="display" readonly value="{{ currentEquation }}">
+            <input class="display" type="text" id="display" name="display" readonly value="{{ bankProblem }}{{ currentEquation }}">
             <div class="button">
                 <div class="cbutton" onclick="showMessage('Electro Flash')">⚡︎</div>
-                <div class="cbutton" onclick="showMessage('Help')">[?]</div>
+                <button name="bank" type="submit" class="cbutton">MB</button>
                 <div class="cbutton" onclick="turnOff()">OFF</div>
                 <div class="hbutton on" onclick="turnOn()">ON</div>
 
                 <div class="cbutton" onclick="showMessage('Wipe Out')">💥</div>
-                <div class="cbutton" onclick="showMessage('Answer Checker')">???</div>
+                <button name="answer_checker" class="cbutton">???</button>
                 <div class="cbutton" onclick="showMessage('Force Out')">↗</div>
                 <div class="hbutton" onclick="inputOperator('/')">÷</div>
 
@@ -59,8 +59,8 @@
                 <div class="hbutton" onclick="inputOperator('+')">+</div>
 
                 <div class="brbutton" onclick="showNumber(0)">0</div>
-                <button type="submit" class="brbutton">GO</button>
-                <div class="brbutton">⚫</div>
+                <button name="go" type="submit" class="brbutton">GO</button>
+                <button name="check" type="submit" class="brbutton">CHECK</button>
                 <div class="brbutton" onclick="inputOperator('=')">=</div>
             </div>
             <div class="grip rgrip">
@@ -98,15 +98,19 @@
         </div>
     </form>
 
+    <br>
+    <div class="additional-info">Last Memory Bank Score: {{ memoryBankScore }}</div>
+
     <div class="additional-info">
         <p>Note: Future functionality will include choosing the game and then pressing 'GO' to start the game.</p>
     </div>
 
     <script>
         let isOn = true;
-        let expression = '';
+        let expression = document.getElementById('display').value;
     
         function showMessage(message) {
+            clearMessages()
             if (isOn) {
                 document.getElementById('display').value = message;
                 expression = '';
@@ -114,6 +118,7 @@
         }
     
         function showNumber(number) {
+            clearMessages()
             if (isOn) {
                 const display = document.getElementById('display');
                 if (display.value === "0") {
@@ -145,6 +150,10 @@
             isOn = false;
             document.getElementById('display').value = "";
             expression = '';
+        }
+
+        function clearMessages() {
+            if (expression.length > 0 && (expression[0] == 'C' || expression[0] == 'E' || expression[0] == 'B')) expression = '';
         }
 
     </script>
