@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.calc {
+    position: relative;
+    background-color: #333;
+    border: 2px solid #666;
+    border-radius: 20px 20px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+    padding: 20px;
+}
+
+.grip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 15px;
+    position: absolute;
+    top: 100px;
+    height: 180px;
+    background: #333;
+}
+
+.lgrip {
+    border-radius: 10px 0 0 10px;
+    left: -15px;
+}
+
+.rgrip {
+    border-radius: 0 10px 10px 0;
+    right: -15px;
+}
+
+.vridge {
+    width: 12px;
+    height: 10px;
+    background: #333;
+    border-radius: 3px;
+    margin: 3px 0;
+}
+
+.lgrip .vridge {
+    transform: translateX(-50%);
+}
+
+.rgrip .vridge {
+    transform: translateX(50%);
+}
+
+.bgrip {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    bottom: -10px;
+}
+
+.lbgrip {
+    justify-content: flex-start;
+    margin-left: 40px;
+}
+
+.rbgrip {
+    justify-content: flex-end;
+    margin-right: 40px;
+}
+
+.invbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60px;
+    height: 15px;
+    background: #333;
+    border-radius: 10px; 
+}
+
+.invridge {
+    width: 6px;
+    height: 10px;
+    background: #333;
+    border-radius: 3px;
+    margin: 1px;
+    transform: translateY(70%);
+}
+
+.display {
+    background-color: #000;
+    color: #0f0;
+    width: 280px;
+    height: 60px;
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 34px;
+    padding-right: 20px;
+    overflow: hidden;
+}
+
+.button {
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+    gap: 10px;
+    background-color: #5f9ea0;
+    border: 2px solid #4682b4;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.hbutton, .cbutton, .rbutton, .brbutton {
+    background-color: #ffcc00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border: 1px solid #666;
+    transition: transform 0.1s;
+}
+
+.hbutton:hover, .cbutton:hover, .rbutton:hover, .brbutton:hover {
+    transform: translateY(-2px);
+}
+
+.hbutton:active, .cbutton:active, .rbutton:active, .brbutton:active {
+    transform: translateY(2px);
+}
+
+.hbutton {
+    width: 60px;
+    height: 40px;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 80% 100%, 20% 100%, 0% 50%);
+}
+
+.cbutton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.rbutton {
+    width: 60px;
+    height: 40px;
+    border-radius: 5%;
+}
+
+.brbutton {
+    width: 65px;
+    height: 50px;
+    border-radius: 5%;
+}
+
+.hbutton.on::after {
+    content: "(clear)";
+    position: absolute;
+    top: 60%;
+    font-size: 8px;
+    color: #000;
+    text-align: center;
+    width: 100%;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #2c3e50; /* Darker background from inline CSS */
+}
+
+.logo {
+    font-family: 'Press Start 2P', sans-serif;
+    text-align: center;
+    line-height: 0.9;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.logo h1 {
+    font-size: 80px;
+    margin: 0;
+    color: #f1c40f;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        0 0 10px #f1c40f,
+        0 0 20px #f39c12, 
+        0 0 30px #e67e22;
+}
+
+.logo h2 {
+    font-size: 30px;
+    margin: 0;
+    letter-spacing: -1px;
+    position: relative;
+    top: -10px;
+    left: 10px;
+    color: #ecf0f1;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        0 0 5px #ecf0f1,
+        0 0 10px #bdc3c7,
+        0 0 15px #95a5a6;
+}
+
+.instructions, .additional-info {
+    font-size: 18px;
+    max-width: 600px;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.logo h1:hover, .logo h2:hover {
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 
+            -2px -2px 0 #000, 2px -2px 0 #000, 
+            -2px 2px 0 #000, 2px 2px 0 #000, 
+            0 0 10px #f1c40f, 0 0 20px #f39c12, 0 0 30px #e67e22;
+    }
+    100% {
+        text-shadow: 
+            -2px -2px 0 #000, 2px -2px 0 #000, 
+            -2px 2px 0 #000, 2px 2px 0 #000, 
+            0 0 20px #f1c40f, 0 0 40px #f39c12, 0 0 60px #e67e22, 0 0 80px #d35400;
+    }
+}

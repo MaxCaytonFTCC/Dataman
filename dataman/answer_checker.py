@@ -22,5 +22,5 @@ def checkAnswer(problemString : str) -> bool:
     try:
         if (splitProblem[1].isnumeric() == False): return False
         return checkInput(splitProblem[0],int(splitProblem[1]))
-    except SyntaxError:
+    except:
         return False

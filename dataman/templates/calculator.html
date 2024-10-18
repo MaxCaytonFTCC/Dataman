@@ -1,153 +1,162 @@
-<!--Calculator HTML created with Claude AI https://claude.ai-->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greg The Oracle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/calcstyle.css') }}">
+</head>
+<body>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-
-    <title>Dataman</title>
-    <style>
-        .calculator {
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-            width: fit-content;
-        }
-
-        .instructions {
-            margin: 0 auto;
-            width: fit-content;
-            margin-top: 15%;            
-        }
-
-        #instruction {
-            text-align:center;
-        }
-
-        #check {
-            border-radius: 80px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            
-            width: fit-content;
-            margin-bottom: 15%;            
-        }
-
-        input[type="text"] {
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 10px;
-            font-size: 18px;
-            color: #ffd861;
-            border: 1px solid #000000;
-            border-radius: 4px;
-            background-color: #15159b;
-        }
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2px;
-        }
-        button {
-            padding: 10px;
-            font-size: 18px;
-            border: none;
-            background-color: #409ade;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        button:hover {
-            background-color: #85e1f1;
-        }
-        .operator {
-            background-color: #ff9800;
-            color: white;
-        }
-        .operator:hover {
-            background-color: #f57c00;
-        }
-    </style>    
-
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Dataman</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link active" href="#">Answer Checker
-                  <span class="visually-hidden">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Memory Bank</a>
-              </li>
-          </div>
-        </div>
-      </nav>
-    <div class="instructions">
-        <p id="instruction" class="text-body-secondary">Enter a math expression, an equal sign and then an answer. Example: 2+2=4</p>
-        <p id="instruction" class="text-body-secondary">Then press 'Check Answer' to see if your answer is correct. Press 'C' to clear.</p>  
-        <p id="instruction" class="text-body-secondary">'You got it!' will be displayed if you are correct and 'EEEEEE' if you are not</p>  
+    <div class="logo">
+        <h1>GREG</h1>
+        <h2>The Oracle</h2>
     </div>
 
-    <div class="calculator">
-        <div class="card border-light mb-3" style="max-width: 20rem;">
-            <div class="card-header">Dataman</div>
-            <div class="card-body">
-                <form method ="POST">
-                    <input type="text" id="display" name="display" class="form-control mb-3" readonly value="{{ currentEquation }}">
-                    <button id="check" class="btn btn-success">Check Answer</button>                    
-                </form>
-                    <div class="buttons">
-                        <button onclick="enterOperandDigit('7')">7</button>
-                        <button onclick="enterOperandDigit('8')">8</button>
-                        <button onclick="enterOperandDigit('9')">9</button>
-                        <button class="operator" onclick="enterOperation('/')">/</button>
-                        <button onclick="enterOperandDigit('4')">4</button>
-                        <button onclick="enterOperandDigit('5')">5</button>
-                        <button onclick="enterOperandDigit('6')">6</button>
-                        <button class="operator" onclick="enterOperation('*')">*</button>
-                        <button onclick="enterOperandDigit('1')">1</button>
-                        <button onclick="enterOperandDigit('2')">2</button>
-                        <button onclick="enterOperandDigit('3')">3</button>
-                        <button class="operator" onclick="enterOperation('-')">-</button>
-                        <button onclick="enterOperandDigit('0')">0</button>                        
-                        <button onclick="enterOperation('=')" >=</button>
-                        <button onclick="clearCalculator()">C</button>
-                        <button class="operator" onclick="enterOperation('+')">+</button>
-                    </div>
-                </div>                
+    <div class="instructions">
+        <p>Welcome to the Greg The Oracle! Please use the buttons to perform basic calculations. Turn the calculator ON using the ON button, and press OFF to turn it off. Currently, the Answer Checker (???) Game is the only functional game. Stay tuned for more!</p>
+    </div>
+
+    <form method ="POST">
+        <div class="calc">
+            <div class="grip lgrip">
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+            </div>
+            <input class="display" type="text" id="display" name="display" readonly value="{{ bankProblem }}{{ currentEquation }}">
+            <div class="button">
+                <div class="cbutton" onclick="showMessage('Electro Flash')">⚡︎</div>
+                <button name="bank" type="submit" class="cbutton">MB</button>
+                <div class="cbutton" onclick="turnOff()">OFF</div>
+                <div class="hbutton on" onclick="turnOn()">ON</div>
+
+                <div class="cbutton" onclick="showMessage('Wipe Out')">💥</div>
+                <button name="answer_checker" class="cbutton">???</button>
+                <div class="cbutton" onclick="showMessage('Force Out')">↗</div>
+                <div class="hbutton" onclick="inputOperator('/')">÷</div>
+
+                <div class="rbutton" onclick="showNumber(7)">7</div>
+                <div class="rbutton" onclick="showNumber(8)">8</div>
+                <div class="rbutton" onclick="showNumber(9)">9</div>
+                <div class="hbutton" onclick="inputOperator('*')">×</div>
+
+                <div class="rbutton" onclick="showNumber(4)">4</div>
+                <div class="rbutton" onclick="showNumber(5)">5</div>
+                <div class="rbutton" onclick="showNumber(6)">6</div>
+                <div class="hbutton" onclick="inputOperator('-')">-</div>
+
+                <div class="rbutton" onclick="showNumber(1)">1</div>
+                <div class="rbutton" onclick="showNumber(2)">2</div>
+                <div class="rbutton" onclick="showNumber(3)">3</div>
+                <div class="hbutton" onclick="inputOperator('+')">+</div>
+
+                <div class="brbutton" onclick="showNumber(0)">0</div>
+                <button name="go" type="submit" class="brbutton">GO</button>
+                <button name="check" type="submit" class="brbutton">CHECK</button>
+                <div class="brbutton" onclick="inputOperator('=')">=</div>
+            </div>
+            <div class="grip rgrip">
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+                <div class="vridge"></div>
+            </div>
+            <div class="bgrip lbgrip">
+                <div class="invbar">
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                </div>
+            </div>
+            <div class="bgrip rbgrip">
+                <div class="invbar">
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                    <div class="invridge"></div>
+                </div>
             </div>
         </div>
+    </form>
+
+    <br>
+    <div class="additional-info">Last Memory Bank Score: {{ memoryBankScore }}</div>
+
+    <div class="additional-info">
+        <p>Note: Future functionality will include choosing the game and then pressing 'GO' to start the game.</p>
+    </div>
 
     <script>
-
-        function enterOperandDigit(digit) {
-            document.getElementById('display').value += digit;
+        let isOn = true;
+        let expression = document.getElementById('display').value;
+    
+        function showMessage(message) {
+            clearMessages()
+            if (isOn) {
+                document.getElementById('display').value = message;
+                expression = '';
+            }
         }
-
-        function enterOperation(operation) {
-            document.getElementById('display').value += operation;            
+    
+        function showNumber(number) {
+            clearMessages()
+            if (isOn) {
+                const display = document.getElementById('display');
+                if (display.value === "0") {
+                    expression = number.toString();
+                } else {
+                    expression += number.toString();
+                }
+                display.value = expression;
+            }
         }
-
-        function clearCalculator() {
+    
+        function inputOperator(operator) {
+            if (isOn) {
+                const display = document.getElementById('display');
+                if (!isNaN(display.value.slice(-1))) {
+                    expression += operator;
+                    display.value = expression;
+                }
+            }
+        }
+    
+        function turnOn() {
+            isOn = true;
+            document.getElementById('display').value = "0";
+            expression = "0";
+        }
+    
+        function turnOff() {
+            isOn = false;
             document.getElementById('display').value = "";
+            expression = '';
+        }
+
+        function clearMessages() {
+            if (expression.length > 0 && (expression[0] == 'C' || expression[0] == 'E' || expression[0] == 'B')) expression = '';
         }
 
     </script>
     
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
